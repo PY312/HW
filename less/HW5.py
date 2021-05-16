@@ -23,10 +23,11 @@ while True:
         try:
             print ('На русском языке это -   ' + en_ru[word_en])
         except KeyError:
-            print('Нет такого слова в в английском словаре.')
-            action = input('Хотите ввести новое слово на английском языке языке? Y/N ')
+            print('Нет такого слова в русском словаре.')
+            action = input('Хотите ввести новое слово на русском языке языке? Y/N ')
             if action == 'Y':
                 en_ru[word_en] = input(f'Введите первод к слову {word_en} ')
+                print(' Слово успешно добавлено в словарь')
         try:
             print ('на кыргызском языке это -' + en_kg[word_en])
         except KeyError:
