@@ -1,71 +1,87 @@
 ru_en = {'монета': 'money',
          'красный': 'red',
-         'кружка':"cup"}
+         'кружка': "cup"}
 ru_kg = {'монета': "тыйын",
-         'красный' :'кызыл',
+         'красный':'кызыл',
          'нож':'бычак'}
 kg_ru = {'акча':'деньги',
          'тамак': 'еда',
          'бала':'мальчик'}
 kg_en = {'акча': 'money',
          'тамак': 'food',
-         'эркек':'man'}
+         'эркек':'man',
+         'money':'btcnjdsq'}
 en_ru = {'money':'деньги',
          'red':'красный',
          'key':'ключ'}
 en_kg = {'money': 'акча',
          'red': 'кызыл',
          'girl':'кыз'}
+en = list(en_ru.keys())+list(en_kg.keys())
+ru = list(ru_kg.keys())+list(ru_en.keys())
+kg = list(kg_en.keys())+list(kg_ru.keys())
+dictionary = en+ru+kg
 while True:
-    lang = input('Выберите язык  : ')
-    if lang == 'en':
-        word_en = input('Введите слово для перевода :')
+    word = input('Введите слово для перевода :')
+    if word in en:
+        print ('Язык оригинала английский!')
         try:
-            print ('На русском языке это -   ' + en_ru[word_en])
+              print (en_kg[word])
         except KeyError:
-            print('Нет такого слова в русском словаре.')
-            action = input('Хотите ввести новое слово на русском языке языке? Y/N ')
+            print ('Нет перевода данного слова на кыргызский язык')
+            action = input('Хотите ввести перевод на кыргызском языке? Y/N ')
             if action == 'Y':
-                en_ru[word_en] = input(f'Введите первод к слову {word_en} ')
-                print(' Слово успешно добавлено в словарь')
+                en_kg[word] = input(f'Введите перевод к слову {word} ')
         try:
-            print ('на кыргызском языке это -' + en_kg[word_en])
+            print(en_ru[word])
         except KeyError:
-            print('Нет такого слова в кыргызском словаре.')
-            action = input('Хотите ввести новое слово на кыргызском языке? Y/N ')
-            if action == 'Y':
-                en_kg[word_en] = input(f'Введите первод к слову {word_en} ')
-    elif lang == 'kg':
-        word_kg = input('Введите слово для перевода :')
+               print('Нет перевода данного слова на русский язык')
+               action = input('Хотите ввести перевод на русском языке? Y/N ')
+               if action == 'Y':
+                    en_ru[word] = input(f'Введите перевод к слову {word} ')
+    elif word in ru:
+        print('Язык оригинала русский!')
         try:
-            print('На английском это -   ' + kg_en[word_kg])
+            print(ru_kg[word])
         except KeyError:
-            print('Нет такого слова в в англиском словаре.')
-            action = input('Хотите ввести новое слово на англиском языке языке? Y/N ')
+            print('Нет перевода данного слова на кыргызский язык')
+            action = input('Хотите ввести перевод на кыргызском языке? Y/N ')
             if action == 'Y':
-                kg_en[word_kg] = input(f'Введите первод к слову {word_kg} ')
+                ru_kg[word] = input(f'Введите перевод к слову {word} ')
         try:
-            print('на русском языке это -' + kg_ru[word_kg])
+            print(ru_en[word])
         except KeyError:
-            print('Нет такого слова в русском словаре.')
-            action = input('Хотите ввести новое слово на русском языке языке? Y/N ')
+            print('Нет перевода данного слова на английский язык')
+            action = input('Хотите ввести перевод на англиском языке? Y/N ')
             if action == 'Y':
-                kg_ru[word_kg] = input(f'Введите перевод к слову {word_kg} ')
-    elif lang == 'ru':
-        word_ru = input('Введите слово :')
+                ru_en[word] = input(f'Введите перевод к слову {word} ')
+    elif word in kg:
+        print('Язык оригинала кыргызский')
         try:
-            print('на английском языке это -' + ru_en[word_ru])
+            print(kg_en[word])
         except KeyError:
-            print('Нет такого слова в в английском словаре.')
-            action = input('Хотите ввести новое слово на английском языке языке? Y/N ')
+            print('Нет перевода данного слова на английский язык')
+            action = input('Хотите ввести перевод на английском языке? Y/N ')
             if action == 'Y':
-                ru_en[word_ru] = input(f'Введите перевод к слову {word_ru} ')
+                kg_en[word] = input(f'Введите перевод к слову {word} ')
         try:
-            print ('на кыргызском языке это -' + ru_kg[word_ru])
+            print(kg_ru[word])
         except KeyError:
-            print('Нет такого слова в кыргызском языке.')
-            action = input('Хотите ввести новое слово на кыргызском языке? Y/N ')
+            print('Нет перевода слова на русский язык')
+            action = input('Хотите ввести перевод на русском языке? Y/N ')
             if action == 'Y':
-                ru_kg[word_ru] = input(f'Введите перевод к слову {word_ru} ')
+                kg_ru[word] = input(f'Введите перевод к слову {word} ')
     else:
-        print('Не верно выбран язык :-( ')
+        print('Такого слова нет в словаре')
+        action = input('Хотите ввести новое слово словарь? Y/N ')
+        if action == 'Y':
+            lang = (input('Выберите язык оригинала en, ru, kg    '))
+            if lang == 'en':
+                en_ru[word] = input(f'Введите перевод к слову {word} на русском языке ')
+                en_kg[word] = input(f'Введите перевод к слову {word} на кыргызском языке ')
+            elif lang == 'ru':
+                ru_en[word] = input(f'Введите перевод к слову {word} на английском языке ')
+                ru_kg[word] = input(f'Введите перевод к слову {word} на кыргызском языке ')
+            elif lang == 'kg':
+                en_ru[word] = input(f'Введите перевод к слову {word} на русском языке ')
+                en_ru[word] = input(f'Введите перевод к слову {word} на английском языке ')
